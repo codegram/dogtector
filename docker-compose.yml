@@ -1,11 +1,13 @@
 version: '3'
 services:
   client:
+    image: ultrayoshi/dogtector-client
     networks:
       - frontend
     labels:
       - "traefik.port=80"
   server:
+    image: ultrayoshi/dogtector-server
     networks:
       - backend
     labels:

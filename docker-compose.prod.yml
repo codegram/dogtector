@@ -1,7 +1,6 @@
 version: '3'
 services:
   client:
-    image: ultrayoshi/dogtector-client
     build:
       dockerfile: Dockerfile.prod
       args:
@@ -13,7 +12,6 @@ services:
       restart_policy:
         condition: on-failure
   server:
-    image: ultrayoshi/dogtector-server
     build:
       args:
         - node_env=production
