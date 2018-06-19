@@ -8,6 +8,7 @@ ARG node_env=production
 # Environment
 ENV APP_HOME /code
 ENV NODE_ENV $node_env
+ENV HOST 0.0.0.0
 
 # Install local dependencies
 ADD package.json /tmp/package.json
