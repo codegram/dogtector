@@ -3,7 +3,6 @@ services:
   client:
     image: ultrayoshi/dogtector-client
     build:
-      context: client
       dockerfile: Dockerfile.prod
       args:
         - node_env=production
