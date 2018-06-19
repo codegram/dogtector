@@ -9,6 +9,7 @@ services:
     volumes:
       - ./client:/code
     labels:
+      - "traefik.port=8080"
       - "traefik.frontend.rule=PathPrefix:/dogtector"
   server:
     build:

@@ -7,6 +7,7 @@ services:
       args:
         - node_env=production
     labels:
+      - "traefik.port=80"
       - "traefik.frontend.rule=Host:dogtector.beagleknight.com"
     deploy:
       replicas: 1
