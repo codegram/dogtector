@@ -7,7 +7,7 @@ services:
       args:
         - node_env=development
     volumes:
-      - client:/code
+      - ./client:/code
     networks:
       - frontend
     labels:
@@ -19,7 +19,7 @@ services:
       args:
         - node_env=development
     volumes:
-      - server:/code
+      - ./server:/code
     networks:
       - backend
     labels:

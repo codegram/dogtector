@@ -17,5 +17,6 @@ RUN cd /tmp && npm i && mkdir -p $APP_HOME && \
 
 # Add source code
 ADD . $APP_HOME
-RUN cd /code && \
-    npm run serve
+
+# Run the development server
+CMD cd /code && npm run serve
