@@ -1,0 +1,51 @@
+version: '3'
+services:
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile
+      args:
+        - node_env=development
+    volumes:
+      - client:/code
+    networks:
+      - frontend
+    labels:
+      - "traefik.port=80"
+      - "traefik.frontend.rule=Path:/dogtector"
+  server:
+    build:
+      context: server
+      args:
+        - node_env=development
+    volumes:
+      - server:/code
+    networks:
+      - backend
+    labels:
+      - "traefik.port=3001"
+      - "traefik.frontend.rule=Path:/dogtector-api"
+  redis:
+    image: redis
+    networks:
+      - backend
+    labels:
+      - "traefik.enable=false"
+  reverse-proxy:
+    image: traefik
+    command: --api --docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks:
+      - overlay
+      - frontend
+      - backend
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.enable=false"
+networks:
+  overlay:
+  frontend:
+  backend:

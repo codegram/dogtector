@@ -1,0 +1,28 @@
+{
+  "name": "dogtector-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "boom": "^7.2.0",
+    "del": "^3.0.0",
+    "hapi": "^17.5.1",
+    "inert": "^5.1.0",
+    "redis": "^2.8.0",
+    "uuid": "^3.2.1",
+    "@types/boom": "^7.2.0",
+    "@types/del": "^3.0.1",
+    "@types/hapi": "^17.0.12",
+    "@types/inert": "^5.1.1",
+    "@types/redis": "^2.8.6",
+    "@types/uuid": "^3.4.3",
+    "nodemon": "^1.17.5",
+    "ts-node": "^6.1.1",
+    "typescript": "^2.9.2"
+  }
+}

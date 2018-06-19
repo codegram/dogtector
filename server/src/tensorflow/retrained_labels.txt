@@ -1,0 +1,6 @@
+beagle
+chihuahua
+dachshund
+husky
+labrador
+shiba

@@ -1,0 +1,39 @@
+version: '3'
+services:
+  client:
+    image: ultrayoshi/dogtector-client
+    build:
+      context: client
+      dockerfile: Dockerfile.prod
+      args:
+        - node_env=production
+    labels:
+      - "traefik.frontend.rule=Host:dogtector.beagleknight.com"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  server:
+    image: ultrayoshi/dogtector-server
+    build:
+      args:
+        - node_env=production
+    labels:
+      - "traefik.frontend.rule=Host:dogtector-api.beagleknight.com"
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+  redis:
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  reverse-proxy:
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
