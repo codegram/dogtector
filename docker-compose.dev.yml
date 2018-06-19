@@ -9,8 +9,7 @@ services:
     volumes:
       - ./client:/code
     labels:
-      - "traefik.frontend.rule=Path:/dogtector"
-      - "traefik.frontend.rule=ReplacePathRegex:^/dogtector/(.*) /$$1"
+      - "traefik.frontend.rule=PathPrefix:/dogtector"
   server:
     build:
       context: server
@@ -19,5 +18,4 @@ services:
     volumes:
       - ./server:/code
     labels:
-      - "traefik.frontend.rule=Path:/dogtector-api"
-      - "traefik.frontend.rule=ReplacePathRegex:^/dogtector-api/(.*) /$$1"
+      - "traefik.frontend.rule=PathPrefix:/dogtector-api;PathPrefixStrip:/dogtector-api"
